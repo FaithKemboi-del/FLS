@@ -4,8 +4,8 @@ export type PracticeArea = {
 };
 
 /**
- * Known firm facts only.
  * Add further practice areas to this list when they are known.
+ * Home and the practice page both render this array.
  */
 export const practiceAreas: PracticeArea[] = [
   {
@@ -13,6 +13,13 @@ export const practiceAreas: PracticeArea[] = [
     label: "Practice focus",
   },
 ];
+
+export function practiceSlug(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
 
 export const firm = {
   name: "Forthright Legal Services",
@@ -25,8 +32,7 @@ export const firm = {
   phone: "0738",
   whatsapp: "0738",
   hours: "9:00–4:00pm",
+  contactHours: "Monday–Friday 9:00–4:00pm",
   years: "10+",
-  feeSentence: "Consultation fee is KES 15,000",
-  feeNote: "This amount is a sample, pending the firm’s figure.",
   feeAmount: "KES 15,000",
 } as const;

@@ -112,8 +112,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.8rem 1.4rem;
+  gap: 0.75rem 1.25rem;
   padding: 0.2rem 0 0.95rem;
   border-bottom: 1px solid var(--rule);
   position: sticky;
@@ -147,8 +146,39 @@ p {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-end;
   gap: 0.85rem 1.15rem;
+}
+
+.header-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-left: auto;
+}
+
+.nav-phone {
+  color: inherit;
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.05rem;
+}
+
+.nav-phone:hover {
+  border-bottom-color: var(--ink);
+}
+
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.45rem;
+  padding: 0.4rem 0.7rem;
+  background: transparent;
+  border: 1px solid var(--ink);
+  font-size: 0.84rem;
+  font-weight: 500;
 }
 
 .text-link {
@@ -159,8 +189,13 @@ p {
   padding-bottom: 0.05rem;
 }
 
-.text-link:hover {
+.text-link:hover,
+.text-link.is-active {
   border-bottom-color: var(--ink);
+}
+
+.text-link.is-active {
+  border-bottom-color: var(--cobalt);
 }
 
 .btn {
@@ -321,12 +356,21 @@ p {
   gap: 1.5rem;
 }
 
-.practice-row h3 {
+.practice-name {
   font-family: var(--serif);
   font-weight: 540;
   font-size: clamp(2.5rem, 5vw, 4.15rem);
   letter-spacing: -0.042em;
   line-height: 0.92;
+}
+
+.practice-name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.practice-name a:hover {
+  border-bottom: 1px solid var(--ink);
 }
 
 .practice-label {
@@ -391,6 +435,46 @@ p {
   font-size: 1.08rem;
 }
 
+.spec a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+
+.section-link {
+  margin-top: 1.15rem;
+}
+
+.page {
+  padding: 1.8rem 0 1rem;
+}
+
+.page-head {
+  display: grid;
+  grid-template-columns: 4.25rem minmax(0, 1fr);
+  gap: 0.4rem 1rem;
+}
+
+.page h1 {
+  font-family: var(--serif);
+  font-weight: 540;
+  font-size: clamp(2.6rem, 5vw, 4.4rem);
+  letter-spacing: -0.042em;
+  line-height: 0.95;
+}
+
+.page .place-display {
+  margin-top: 0.85rem;
+}
+
+.practice-entry {
+  scroll-margin-top: 5.5rem;
+}
+
+.page-book {
+  margin-top: 1.6rem;
+}
+
 .consult-line {
   margin: 0.9rem 0 1.45rem;
   font-family: var(--serif);
@@ -404,10 +488,27 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 0.4rem 1.4rem;
+  align-items: center;
+  gap: 0.55rem 1.4rem;
   border-top: 1px solid var(--rule);
   padding-top: 1rem;
   font-size: 0.84rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+}
+
+.footer-links a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.footer-links a:hover {
+  border-bottom-color: var(--ink);
 }
 
 .book {
@@ -953,9 +1054,61 @@ button.day:hover {
     font-size: 0.56rem;
   }
 
-  .site-nav {
+  .page-head {
+    grid-template-columns: 2.4rem minmax(0, 1fr);
+  }
+
+  .page-book {
     width: 100%;
+  }
+}
+
+@media (max-width: 860px) {
+  .site-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    row-gap: 0.75rem;
+  }
+
+  .wordmark {
+    grid-row: 1;
+  }
+
+  .header-tools {
+    grid-row: 2;
+    margin-left: 0;
     justify-content: flex-start;
+    gap: 0.55rem 0.7rem;
+  }
+
+  .header-tools .btn {
+    flex: 1;
+    width: auto;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .site-nav {
+    display: none;
+    grid-row: 3;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding-top: 0.15rem;
+  }
+
+  .site-nav.is-open {
+    display: flex;
+  }
+
+  .site-nav .text-link {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 1.05rem;
   }
 }
 

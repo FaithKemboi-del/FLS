@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { firm, practiceAreas } from "../firm";
+import { firm, practiceAreas, practiceSlug } from "../firm";
 
 export function HomePage() {
   useEffect(() => {
@@ -25,7 +25,7 @@ export function HomePage() {
             <div>
               <p className="place-name">{firm.neighbourhood}</p>
               <p>{firm.cityLine}</p>
-              <p className="place-hours">Open {firm.hours}</p>
+              <p className="place-hours">Weekdays, {firm.hours}</p>
             </div>
           </div>
         </div>
@@ -43,7 +43,9 @@ export function HomePage() {
               <li key={area.title}>
                 <article className="practice-row">
                   <div>
-                    <h3>{area.title}</h3>
+                    <h3 className="practice-name">
+                      <Link to={`/practice#${practiceSlug(area.title)}`}>{area.title}</Link>
+                    </h3>
                     <p className="practice-label">{area.label}</p>
                   </div>
                   <p className="years">
@@ -57,10 +59,10 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="section" id="visit">
+      <section className="section" id="hours">
         <p className="section-index">02</p>
         <div>
-          <h2>Visit</h2>
+          <h2>Hurlingham</h2>
           <p className="place-display">{firm.neighbourhood}</p>
           <dl className="spec">
             <div>
@@ -69,17 +71,24 @@ export function HomePage() {
             </div>
             <div>
               <dt>Hours</dt>
-              <dd>{firm.hours}</dd>
+              <dd>Weekdays, {firm.hours}</dd>
             </div>
             <div>
               <dt>Phone</dt>
-              <dd>{firm.phone}</dd>
+              <dd>
+                <a href={`tel:${firm.phone}`}>{firm.phone}</a>
+              </dd>
             </div>
             <div>
               <dt>WhatsApp</dt>
               <dd>{firm.whatsapp}</dd>
             </div>
           </dl>
+          <p className="section-link">
+            <Link className="text-link" to="/contact">
+              Contact
+            </Link>
+          </p>
         </div>
       </section>
 

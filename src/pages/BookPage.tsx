@@ -89,7 +89,7 @@ export function BookPage() {
       {step === "schedule" ? (
         <div className="book-top">
           <h1>Book a consultation</h1>
-          <p className="lede">Choose a weekday. Hours run {firm.hours}.</p>
+          <p className="lede">Choose a weekday. {firm.contactHours}.</p>
           <Calendar
             month={month}
             now={now}
@@ -133,8 +133,7 @@ export function BookPage() {
                 {formatLongDate(dateISO)}
                 <span>{selectedTime}</span>
               </p>
-              <p className="fee-sentence">{firm.feeSentence}</p>
-              <p className="fee-note">{firm.feeNote}</p>
+              <p className="fee-sentence">Consultation fee is {firm.feeAmount}</p>
               <button type="button" className="btn" onClick={proceed}>
                 Proceed
               </button>
@@ -197,8 +196,6 @@ export function BookPage() {
             <p className="pay-for">
               {formatLongDate(dateISO)} · {selectedTime}
             </p>
-            <p className="fee-note">{firm.feeNote}</p>
-            <p className="fee-note">Simulated prompt. Nothing is sent to a mobile network.</p>
             <button type="button" className="btn" onClick={confirmPayment}>
               Confirm payment
             </button>

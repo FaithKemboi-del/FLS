@@ -43,8 +43,6 @@ export function ReceiptCard({ dateISO, time, phone, reference, onReset }: Receip
           <dd>Paid</dd>
         </div>
       </dl>
-      <p className="receipt-note">{firm.feeNote}</p>
-      <p className="receipt-note">Simulated confirmation. No charge was made.</p>
       <div className="receipt-actions no-print">
         <button type="button" className="btn" onClick={() => window.print()}>
           Print or save
