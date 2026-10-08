@@ -8,10 +8,12 @@ import "@fontsource-variable/fraunces/opsz-italic.css";
 import "@fontsource-variable/schibsted-grotesk/wght.css";
 import "./index.css";
 
+const basename = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BookingProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={basename === "" ? undefined : basename}>
         <App />
       </BrowserRouter>
     </BookingProvider>

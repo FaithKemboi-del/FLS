@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <rect width="32" height="32" fill="#f4efe4"/>
-  <text x="6" y="23" font-family="Georgia, serif" font-size="20" fill="#161513">F</text>
-  <rect x="6" y="26" width="12" height="2" fill="#1e3ad6"/>
+  <path fill="#161513" d="M8 6h16v3.1H11.6v5.1h10.6v3H11.6V26H8V6z"/>
+  <rect x="8" y="27.2" width="11" height="1.8" fill="#1e3ad6"/>
 </svg>
