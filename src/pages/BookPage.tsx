@@ -1,8 +1,10 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { isValidPhone, useBooking } from "../booking-store";
 import { Calendar } from "../components/Calendar";
 import { ReceiptCard } from "../components/ReceiptCard";
-import { firm } from "../firm";
+import { Link } from "react-router-dom";
+import { PageMeta } from "../components/PageMeta";
+import { feeSentence, firm } from "../firm";
 import {
   TIME_SLOTS,
   addMonths,
@@ -44,15 +46,12 @@ export function BookPage() {
   );
   const [phoneError, setPhoneError] = useState("");
 
-  useEffect(() => {
-    const titles: Record<typeof step, string> = {
-      schedule: "Book a consultation",
-      phone: "Your number",
-      pay: "Payment",
-      receipt: "Receipt",
-    };
-    document.title = `${titles[step]} — ${firm.name}`;
-  }, [step]);
+  const stepTitles: Record<typeof step, string> = {
+    schedule: "Book a consultation",
+    phone: "Your number",
+    pay: "Payment",
+    receipt: "Receipt",
+  };
 
   const minMonth = monthIndex(startOfMonth(now));
   const maxMonth = minMonth + 2;
@@ -73,6 +72,10 @@ export function BookPage() {
 
   return (
     <div className="book">
+      <PageMeta
+        title={`${stepTitles[step]} — ${firm.name}`}
+        description={`Book a weekday consultation with ${firm.name}. ${feeSentence}. ${firm.contactHours}.`}
+      />
       <ol className="steps">
         {STEP_LABELS.map(([number, label], index) => {
           const keys = ["schedule", "phone", "pay", "receipt"] as const;
@@ -89,7 +92,12 @@ export function BookPage() {
       {step === "schedule" ? (
         <div className="book-top">
           <h1>Book a consultation</h1>
-          <p className="lede">Choose a weekday. {firm.contactHours}.</p>
+          <p className="lede">
+            Choose a weekday. {firm.contactHours}.{" "}
+            <Link className="text-link" to="/consultation">
+              How a consultation works
+            </Link>
+          </p>
           <Calendar
             month={month}
             now={now}
@@ -133,7 +141,7 @@ export function BookPage() {
                 {formatLongDate(dateISO)}
                 <span>{selectedTime}</span>
               </p>
-              <p className="fee-sentence">Consultation fee is {firm.feeAmount}</p>
+              <p className="fee-sentence">{feeSentence}</p>
               <button type="button" className="btn" onClick={proceed}>
                 Proceed
               </button>

@@ -9,8 +9,12 @@ npm install
 npm run dev
 ```
 
-Open the URL Vite prints. `npm run build` typechecks and writes `dist/`.
+Open the URL Vite prints. `npm run build` typechecks, writes `dist/`, and adds clean paths for practice, consultation, contact, booking, and a 404 page.
 
-## Content
+Firm facts, practice areas, the consultation fee, and the consultation notes live in `src/firm.ts`. The fee is `feeAmount` (`KES 15,000`). Add further practices to the `practiceAreas` list.
 
-Firm facts, practice areas, and the consultation fee live in `src/firm.ts`. The fee is `feeAmount` (`KES 15,000`). Add further practices to the `practiceAreas` list when they are known.
+## GitHub Pages
+
+Pushes to `main` run `.github/workflows/pages.yml`, which builds with `GITHUB_PAGES=true` so asset paths use `/FLS/`. The published site is [https://faithkemboi-del.github.io/FLS/](https://faithkemboi-del.github.io/FLS/).
+
+In the repository, open **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions**, and save.

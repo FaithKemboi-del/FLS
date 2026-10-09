@@ -61,6 +61,9 @@ export function Frame({ children }: { children: ReactNode }) {
               <NavLink to="/practice" className={itemClass}>
                 Practice
               </NavLink>
+              <NavLink to="/consultation" className={itemClass}>
+                Consultation
+              </NavLink>
               <NavLink to="/contact" className={itemClass}>
                 Contact
               </NavLink>
@@ -85,16 +88,42 @@ export function Frame({ children }: { children: ReactNode }) {
           </header>
           <main id="content">{children}</main>
           <footer className="site-footer">
-            <span>{firm.name}</span>
-            <span className="footer-links">
-              <Link to="/practice">Practice</Link>
-              <Link to="/contact">Contact</Link>
-              <Link to="/book">Book consultation</Link>
-            </span>
-            <span>{firm.address}</span>
-            <a className="nav-phone" href={`tel:${firm.phone}`}>
-              {firm.phone}
-            </a>
+            <div className="footer-grid">
+              <div>
+                <p className="footer-name">{firm.name}</p>
+                <p className="footer-fact">
+                  Hurlingham, Nairobi · {firm.years} years · Regulatory compliance
+                </p>
+              </div>
+              <nav className="footer-links" aria-label="Footer">
+                <Link to="/">Home</Link>
+                <Link to="/practice">Practice</Link>
+                <Link to="/consultation">Consultation</Link>
+                <Link to="/contact">Contact</Link>
+                <Link to="/book">Book consultation</Link>
+              </nav>
+              <dl className="footer-spec">
+                <div>
+                  <dt>Address</dt>
+                  <dd>{firm.address}</dd>
+                </div>
+                <div>
+                  <dt>Hours</dt>
+                  <dd>{firm.contactHours}</dd>
+                </div>
+                <div>
+                  <dt>Phone</dt>
+                  <dd>
+                    <a href={`tel:${firm.phone}`}>{firm.phone}</a>
+                  </dd>
+                </div>
+                <div>
+                  <dt>WhatsApp</dt>
+                  <dd>{firm.whatsapp}</dd>
+                </div>
+              </dl>
+            </div>
+            <p className="footer-copy">© {new Date().getFullYear()} {firm.name}</p>
           </footer>
         </div>
       </div>
